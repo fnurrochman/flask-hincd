@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% block content %}
+
+<form method="POST" action="/template/vlan">
+    {{ form.vlan_name.label }} {{ form.vlan_name() }}<br>
+    {{ form.vlan_id.label }} {{ form.vlan_id() }}<br>
+    <input type="submit" value="Submit">
+</form>
+
+{% endblock %}
