@@ -14,8 +14,7 @@ def template():
 
 @app.route('/updates/')
 def updates():
-    filename = os.listdir('updates')
-    return render_template('updates.html', files=filename)
+    return render_template('updates.html')
 
 @app.route('/updates/latestver')
 def updatesLatestVer():
