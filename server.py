@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, send_file, send_from_directory
+from flask import Flask, render_template, request, send_file
 from scripts import forms, build
 import os
 
@@ -8,18 +8,22 @@ app = Flask(__name__)
 def homepage():
     return render_template('index.html')
 
-@app.route('/template')
+@app.route('/template/')
 def template():
     return render_template('template.html')
 
-@app.route('/updates')
+@app.route('/updates/')
 def updates():
-    filenames = os.listdir('updates')
-    return render_template('updates.html', files=filenames)
+    filename = os.listdir('updates')
+    return render_template('updates.html', files=filename)
 
-@app.route('/updates/<path:filename>')
-def downloadupdates(file):
-    path = file
+@app.route('/updates/latestver')
+def updatesLatestVer():
+    return render_template('latestver.html')
+
+@app.route('/updates/latest')
+def updatesLatest():
+    path = "updates/ToolsHINCDv3.2.zip"
     return send_file(path, as_attachment=True)
 
 @app.route('/template/interface', methods=["GET", "POST"])
